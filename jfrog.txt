@@ -1,0 +1,9 @@
+To Run the Script:
+Save the script as install-artifactory.sh
+
+Give execute permission:
+
+chmod +x install-artifactory.sh
+Run the script:
+
+./install-artifactory.sh
