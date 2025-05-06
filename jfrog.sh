@@ -1,37 +1,26 @@
-#!/bin/bash
 
-# -----------------------------------------------
-# 🧰 Step 1: Update package list
-# -----------------------------------------------
-echo "🔄 Updating system packages..."
-sudo apt update -y
+# 1. Update your package manager 
+sudo apt update
 
-# -----------------------------------------------
-# 📁 Step 2: Change to /opt directory
-# -----------------------------------------------
-echo "📂 Changing directory to /opt..."
-cd /opt || exit
+# 2. switch to root user
+sudo su -
 
-# -----------------------------------------------
-# 📥 Step 3: Download Artifactory OSS 7.9.2 tar.gz
-# -----------------------------------------------
-echo "⬇️ Downloading Artifactory OSS 7.9.2..."
+# 3. Navigate to the target install dir/folder
+cd /opt
+
+# 4. Download jfrog-artifactory packaged file for install
 wget https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/7.9.2/jfrog-artifactory-oss-7.9.2-linux.tar.gz
 
-# -----------------------------------------------
-# 📦 Step 4: Extract the archive
-# -----------------------------------------------
-echo "📦 Extracting the archive..."
+# 5. Unpack the packed file
 tar -xvf jfrog-artifactory-oss-7.9.2-linux.tar.gz
 
-# -----------------------------------------------
-# 🚀 Step 5: Start Artifactory
-# -----------------------------------------------
-echo "🚀 Starting Artifactory..."
-cd artifactory-oss-7.9.2/app/bin/ || exit
+# 6. Navigate to the bin dir of unpack folder
+cd artifactory-oss-7.9.2/app/bin/
+
+# 7. Run artifactory.sh file by passing start input for starting the jfrog service
 ./artifactory.sh start
 
-# -----------------------------------------------
-# ✅ Step 6: Status
-# -----------------------------------------------
-echo "✅ Artifactory startup initiated. Access it at http://localhost:8082/"
+
+# [OPTIONAL] : To install specific version of jfrog-artifactory-oss, visit this link to copy the path link of that tar.gz file: 
+# https://releases.jfrog.io/artifactory/bintray-artifactory/org/artifactory/oss/jfrog-artifactory-oss/
+# Once you copied the link, then you just need to replace the download link from step no. 4, and all steps will remain same.
